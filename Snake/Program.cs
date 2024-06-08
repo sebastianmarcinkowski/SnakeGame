@@ -1,23 +1,20 @@
 ﻿using Snake;
 
-char horizontal = '═';
-char vertical = '║';
-char topLeft = '╔';
-char topRight = '╗';
-char bottomLeft = '╚';
-char bottomRight = '╝';
+var horizontal = '═';
+var vertical = '║';
+var topLeft = '╔';
+var topRight = '╗';
+var bottomLeft = '╚';
+var bottomRight = '╝';
 
-int width = 32;
-int height = 16;
+var width = 32;
+var height = 16;
 
-// Direction
-Direction _direction = Direction.Right;
+var _direction = Direction.Right;
 
-// Game state
-bool gameOver = false;
+var gameOver = false;
 
-// Head
-Pixel snakeHead = new Pixel
+var snakeHead = new Pixel
 {
     X = 19,
     Y = 8,
@@ -25,9 +22,8 @@ Pixel snakeHead = new Pixel
     ConsoleColor = ConsoleColor.Magenta
 };
 
-// Tail
-int startLength = 8;
-List<Pixel> snakeTails = new List<Pixel>();
+var startLength = 8;
+var snakeTails = new List<Pixel>();
 
 for (int i = 1; i < startLength + 1; i++)
 {
@@ -42,16 +38,15 @@ for (int i = 1; i < startLength + 1; i++)
     snakeTails.Add(snakeTail);
 }
 
-// Food
-Pixel food = new Pixel
+var food = new Pixel
 {
     Character = '*',
     ConsoleColor = ConsoleColor.DarkYellow
 };
-Random random = new Random();
 
-// Score
-int score = 0;
+var random = new Random();
+
+var score = 0;
 
 Console.WindowHeight = 20; // 16 + 4 for score
 Console.WindowWidth = 32;
@@ -209,21 +204,25 @@ void WaitForKey()
         switch (info.Key)
         {
             case ConsoleKey.UpArrow:
+            case ConsoleKey.W:
                 if (_direction != Direction.Bottom)
                     _direction = Direction.Top;
                 break;
 
             case ConsoleKey.DownArrow:
+            case ConsoleKey.S:
                 if (_direction != Direction.Top)
                     _direction = Direction.Bottom;
                 break;
 
             case ConsoleKey.LeftArrow:
+            case ConsoleKey.A:
                 if (_direction != Direction.Right)
                     _direction = Direction.Left;
                 break;
 
             case ConsoleKey.RightArrow:
+            case ConsoleKey.D:
                 if (_direction != Direction.Left)
                     _direction = Direction.Right;
                 break;
